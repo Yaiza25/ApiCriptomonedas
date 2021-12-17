@@ -68,6 +68,16 @@ namespace ApiMonedas.Controllers
             return criptomonedas;
         }
 
+        // GET: api/Criptomonedas/1234.7
+        // Filtro por numero 
+        [HttpGet("filtro/{numero}")]
+        public async Task<IEnumerable<Criptomonedas>> GetCriptomonedasFiltro(decimal numero)
+        {
+
+            return await _context.Criptomonedas.Where(t => t.Maximo > numero ).ToListAsync();
+
+        }
+
         // POST: api/Criptomonedas
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
